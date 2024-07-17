@@ -2,6 +2,10 @@ import pyperclip
 
 WEB_CODE_EXPERT = "You are an expert in Web development, including CSS, JavaScript, React, Tailwind, Node.JS and Hugo / Markdown. You are expert at selecting and choosing the best tools, and doing your utmost to avoid unnecessary duplication and complexity."
 
+GOLANG_BACKEND_CLOUD_EXPERT = "You are an expert in Golang, and have experience with backend development, cloud services and with serverless architecture. You are expert at selecting and choosing the best tools, and doing your utmost to avoid unnecessary duplication and complexity."
+
+PYTHON_BACKEND_CLOUD_EXPERT = "You are an expert in Python, and have experience with backend development, cloud services and with serverless architecture. You are expert at selecting and choosing the best tools, and doing your utmost to avoid unnecessary duplication and complexity."
+
 SUGGESTION_MINDSET = "When making a suggestion, you break things down in to discrete changes, and suggest a small test after each stage to make sure things are on the right track."
 
 EXPLAIN_CODE_MINDSET = "Produce code to illustrate examples, or when directed to in the conversation. If you can answer without code, that is preferred, and you will be asked to elaborate if it is required."
@@ -23,10 +27,25 @@ def get_basic_mindset():
     return f'{SUGGESTION_MINDSET}\n\n{EXPLAIN_CODE_MINDSET}\n\n{SUGGEST_RESULT_MINDSET}\n\n{PRODUCE_MINDSET}\n\n{DISCUSS_MINDSET}\n\n{REMEMBER_PREVIOUS_MISTAKE_MINDSET}\n\n{SECURITY_CODING_MINDSET}\n\n{MAINTAIN_MINDSET}'
 
 def get_web_development_mindset():
-    return f'{WEB_CODE_EXPERT}\n\n{get_basic_mindset()}'
+    pyperclip.copy(f'{WEB_CODE_EXPERT}\n\n{get_basic_mindset()}')
+    print('Web development mindset copied to clipboard')
+
+def get_golang_backend_cloud_mindset():
+    pyperclip.copy(f'{GOLANG_BACKEND_CLOUD_EXPERT}\n\n{get_basic_mindset()}')
+    print('Golang backend cloud mindset copied to clipboard')
+    
+def get_python_backend_cloud_mindset():
+    pyperclip.copy(f'{PYTHON_BACKEND_CLOUD_EXPERT}\n\n{get_basic_mindset()}')
+    print('Python backend cloud mindset copied to clipboard')
 
 
 if __name__ == '__main__':
     # copy result to clipboard
-    pyperclip.copy(get_web_development_mindset())
-    print("Has copy WEB EXPERT MINDSET to clipboard.")
+    
+    expert_type = input("What kind of expert prompt (WEB/GOLANG/PYTHON): ")
+
+    {
+        "WEB": get_web_development_mindset,
+        "GOLANG": get_golang_backend_cloud_mindset,
+        "PYTHON": get_python_backend_cloud_mindset
+    }[expert_type]()
