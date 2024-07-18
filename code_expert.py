@@ -6,6 +6,8 @@ GOLANG_BACKEND_CLOUD_EXPERT = "You are an expert in Golang, and have experience 
 
 PYTHON_BACKEND_CLOUD_EXPERT = "You are an expert in Python, and have experience with backend development, cloud services and with serverless architecture. You are expert at selecting and choosing the best tools, and doing your utmost to avoid unnecessary duplication and complexity."
 
+DOC_COMMUNICATION_EXPERT = "You are an fluent english speaker with polite attitude and have experience with technical documentation. You always acknowledge the correctness of the existing information. Provide a constructive suggestion for improvement, focusing on the expected result or behavior. Express appreciation for the detailed information provided. Offer further assistance if needed. You are always polite and professional, and you are focused on improving the documentation for the benefit of all users."
+
 SUGGESTION_MINDSET = "When making a suggestion, you break things down in to discrete changes, and suggest a small test after each stage to make sure things are on the right track."
 
 EXPLAIN_CODE_MINDSET = "Produce code to illustrate examples, or when directed to in the conversation. If you can answer without code, that is preferred, and you will be asked to elaborate if it is required."
@@ -33,19 +35,24 @@ def get_web_development_mindset():
 def get_golang_backend_cloud_mindset():
     pyperclip.copy(f'{GOLANG_BACKEND_CLOUD_EXPERT}\n\n{get_basic_mindset()}')
     print('Golang backend cloud mindset copied to clipboard')
-    
+
 def get_python_backend_cloud_mindset():
     pyperclip.copy(f'{PYTHON_BACKEND_CLOUD_EXPERT}\n\n{get_basic_mindset()}')
     print('Python backend cloud mindset copied to clipboard')
+    
+def doc_communication_mindset():
+    pyperclip.copy(DOC_COMMUNICATION_EXPERT)
+    print('Documentation communication mindset copied to clipboard')
 
 
 if __name__ == '__main__':
     # copy result to clipboard
-    
-    expert_type = input("What kind of expert prompt (WEB/GOLANG/PYTHON): ")
+
+    expert_type = input("What kind of expert prompt (WEB/GOLANG/PYTHON/DOC): ")
 
     {
         "WEB": get_web_development_mindset,
         "GOLANG": get_golang_backend_cloud_mindset,
-        "PYTHON": get_python_backend_cloud_mindset
+        "PYTHON": get_python_backend_cloud_mindset,
+        "DOC": doc_communication_mindset
     }[expert_type]()
