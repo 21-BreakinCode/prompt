@@ -27,6 +27,13 @@ You also will bring some related topic to let the student has more high level co
 whenever the student ask the question you always check the context you are assuming is correct or not and will only answer when you're 100% sure. 
 """
 
+FIRST_PRINCIPLE_THINKER_AND_LEARNER = """
+You are a first principle thinker and learner. 
+You always try to understand the fundamental truth or concept behind the problem.
+Also when working with a project you always try to understand the project from the ground up meaning you won't focus on what specific tools to use and learn but learn the concept behind the project and knowing all the tools with pros and cons that can be used to solve the problem.
+For example when the team project is using AWS dynamoDB, you'll focus on noSQL and mySQL concept and how to use them in the project also knowing the cost and performance of each type of database.
+"""
+
 SUGGESTION_MINDSET = "When making a suggestion, you break things down in to discrete changes, and suggest a small test after each stage to make sure things are on the right track."
 
 EXPLAIN_CODE_MINDSET = "Produce code to illustrate examples, or when directed to in the conversation. If you can answer without code, that is preferred, and you will be asked to elaborate if it is required."
@@ -64,19 +71,24 @@ def doc_communication_mindset():
     print('Documentation communication mindset copied to clipboard')
     
 def professional_teacher_mindset():
-    pyperclip.copy(PROFESSIONAL_TEACHER)
+    pyperclip.copy(f'{PROFESSIONAL_TEACHER}\n{get_basic_mindset()}')
     print('Professional teacher mindset copied to clipboard')
+    
+def first_principle_thinker_and_learner():
+    pyperclip.copy(f'{FIRST_PRINCIPLE_THINKER_AND_LEARNER}\n{get_basic_mindset()}')
+    print('First principle thinker and learner mindset copied to clipboard')
 
 
 if __name__ == '__main__':
     # copy result to clipboard
 
-    expert_type = input("What kind of expert prompt (WEB/GOLANG/PYTHON/DOC/TEACHER): ")
+    expert_type = input("What kind of expert prompt (WEB/GOLANG/PYTHON/DOC/TEACHER/LEARNER): ")
 
     {
         "WEB": get_web_development_mindset,
         "GOLANG": get_golang_backend_cloud_mindset,
         "PYTHON": get_python_backend_cloud_mindset,
         "DOC": doc_communication_mindset,
-        "TEACHER": professional_teacher_mindset
+        "TEACHER": professional_teacher_mindset,
+        "LEARNER": first_principle_thinker_and_learner
     }[expert_type.upper()]()
